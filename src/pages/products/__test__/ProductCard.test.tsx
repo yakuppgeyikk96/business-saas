@@ -21,7 +21,7 @@ describe("ProductCard", () => {
     renderWithRouter(<ProductCard product={mockProduct} viewMode="grid" />);
 
     // Check the title
-    expect(screen.getByText("Test Product")).toBeInTheDocument();
+    expect(screen.getByText("Test Product2")).toBeInTheDocument();
 
     // Check the price
     expect(screen.getByText("$99.99")).toBeInTheDocument();
