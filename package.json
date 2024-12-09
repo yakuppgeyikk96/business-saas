@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "server": "json-server --watch db.json --port 3001",
-    "test": "vitest",
+    "test": "vitest --run",
     "test:ui": "vitest --ui",
     "coverage": "vitest run --coverage",
     "prepare": "husky"
