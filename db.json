@@ -1,0 +1,94 @@
+{
+  "categories": [
+    {
+      "id": "1",
+      "name": "Elektronik"
+    },
+    {
+      "id": "2",
+      "name": "Giyim"
+    },
+    {
+      "id": "3",
+      "name": "Kitap"
+    },
+    {
+      "id": "4",
+      "name": "Ev & Yaşam"
+    },
+    {
+      "id": "5",
+      "name": "Spor"
+    },
+    {
+      "id": "9285",
+      "name": "Bakım&Kozmetik"
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "title": "iPhone 14 Pro",
+      "description": "Apple iPhone 14 Pro 256GB",
+      "price": 999.99,
+      "category": "1",
+      "stock": 15
+    },
+    {
+      "id": "2",
+      "title": "MacBook Air M2",
+      "description": "Apple MacBook Air M2 8GB 256GB",
+      "price": 1299.99,
+      "category": "1",
+      "stock": 10
+    },
+    {
+      "id": "3",
+      "title": "Nike Spor Ayakkabı",
+      "description": "Nike Revolution 6 Erkek Koşu Ayakkabısı",
+      "price": 89.99,
+      "category": "5",
+      "stock": 25
+    },
+    {
+      "id": "4",
+      "title": "Levi's Jean",
+      "description": "Levi's 501 Original Fit Erkek Jean",
+      "price": 79.99,
+      "category": "2",
+      "stock": 30
+    },
+    {
+      "id": "5",
+      "title": "Harry Potter Set",
+      "description": "Harry Potter 7 Kitaplık Tam Set",
+      "price": 129.99,
+      "category": "3",
+      "stock": 20
+    },
+    {
+      "id": "6",
+      "title": "Robot Süpürge",
+      "description": "Akıllı Robot Süpürge ve Paspas",
+      "price": 399.99,
+      "category": "4",
+      "stock": 8
+    },
+    {
+      "id": "7",
+      "title": "Samsung Galaxy S23",
+      "description": "Samsung Galaxy S23 Ultra 256GB",
+      "price": 899.99,
+      "category": "1",
+      "stock": 12
+    },
+    {
+      "id": "8",
+      "title": "Yoga Matı",
+      "description": "Premium 5mm Yoga ve Pilates Matı",
+      "price": 29.99,
+      "category": "5",
+      "stock": 40
+    }
+  ]
+}
