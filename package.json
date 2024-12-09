@@ -19,6 +19,12 @@
     "*.ts": "eslint --fix",
     "*.css": "stylelint --fix"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint-staged",
+      "pre-push": "yarn build && yarn test"
+    }
+  },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
     "@radix-ui/react-alert-dialog": "^1.1.2",
