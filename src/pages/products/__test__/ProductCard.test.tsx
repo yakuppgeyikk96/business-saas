@@ -1,4 +1,5 @@
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
+import { screen } from "@testing-library/dom";
 import { BrowserRouter } from "react-router-dom";
 import { describe, expect, it } from "vitest";
 import ProductCard from "../components/ProductCard";
@@ -21,7 +22,7 @@ describe("ProductCard", () => {
     renderWithRouter(<ProductCard product={mockProduct} viewMode="grid" />);
 
     // Check the title
-    expect(screen.getByText("Test Product2")).toBeInTheDocument();
+    expect(screen.getByText("Test Product")).toBeInTheDocument();
 
     // Check the price
     expect(screen.getByText("$99.99")).toBeInTheDocument();
