@@ -47,14 +47,59 @@ describe("ProductSort", () => {
 
       const item = screen.getByText(getOptionLabel(option.value));
 
-      // Click the option
       fireEvent.click(item);
 
-      // Check if the correct value was passed
       expect(mockOnSortChange).toHaveBeenCalledWith(option);
 
-      // Reset the mock for the next iteration
       mockOnSortChange.mockReset();
+    });
+  });
+
+  it("should maintain selected value after rerender", async () => {
+    const { rerender } = render(
+      <ProductSort onSortChange={mockOnSortChange} />
+    );
+
+    fireEvent.click(screen.getByText("Sıralama"));
+
+    const item = screen.getByText("Fiyat (Artan)");
+
+    fireEvent.click(item);
+
+    expect(screen.getByText("Fiyat (Artan)")).toBeInTheDocument();
+
+    rerender(<ProductSort onSortChange={mockOnSortChange} />);
+
+    expect(screen.getByText("Fiyat (Artan)")).toBeInTheDocument();
+  });
+
+  it("should not call onSortChange when the same option is selected", async () => {
+    render(<ProductSort onSortChange={mockOnSortChange} />);
+
+    fireEvent.click(screen.getByText("Sıralama"));
+    fireEvent.click(screen.getByText("Fiyat (Artan)"));
+    mockOnSortChange.mockClear();
+
+    fireEvent.click(screen.getByText("Fiyat (Artan)"));
+    expect(mockOnSortChange).not.toHaveBeenCalled();
+  });
+
+  it("should close dropdown when clicking outside", async () => {
+    render(<ProductSort onSortChange={mockOnSortChange} />);
+    const sortingDropdown = screen.getByText("Sıralama");
+
+    fireEvent.click(sortingDropdown);
+
+    expect(sortingDropdown).toBeInTheDocument();
+
+    const azSorting = screen.queryByText("İsim (A-Z)");
+
+    expect(azSorting).toBeInTheDocument();
+
+    fireEvent.click(document.body);
+
+    vi.waitFor(() => {
+      expect(azSorting).not.toBeInTheDocument();
     });
   });
 });

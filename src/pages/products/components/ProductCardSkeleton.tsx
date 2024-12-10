@@ -8,7 +8,7 @@ interface ProductCardSkeletonProps {
 const ProductCardSkeleton = ({ viewMode }: ProductCardSkeletonProps) => {
   if (viewMode === "list") {
     return (
-      <Card>
+      <Card data-testid="product-card-skeleton">
         <CardContent className="p-4">
           <div className="flex items-center justify-between">
             <div className="flex-1">
@@ -29,7 +29,7 @@ const ProductCardSkeleton = ({ viewMode }: ProductCardSkeletonProps) => {
   }
 
   return (
-    <Card>
+    <Card data-testid="product-card-skeleton">
       <CardContent className="p-4">
         <div className="space-y-4">
           <div>
