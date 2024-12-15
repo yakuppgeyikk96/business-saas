@@ -6,6 +6,7 @@ interface ProductInfoProps {
 }
 
 export const ProductInfo = ({ product }: ProductInfoProps) => {
+  console.log(product);
   return (
     <CardContent className="space-y-4">
       <div className="grid grid-cols-2 gap-4">
@@ -19,7 +20,7 @@ export const ProductInfo = ({ product }: ProductInfoProps) => {
         </div>
         <div>
           <h3 className="font-semibold">Kategori</h3>
-          <p>{product.category}</p>
+          <p>{product.category.name}</p>
         </div>
       </div>
       <div>

@@ -6,19 +6,25 @@ import { BrowserRouter } from "react-router-dom";
 
 const mockProducts: Product[] = [
   {
-    id: 1,
+    _id: 1,
     title: "Test Product 1",
     price: 99.99,
     description: "Test Description 1",
-    category: "electronics",
+    category: {
+      _id: "1",
+      name: "Test Category",
+    },
     stock: 10,
   },
   {
-    id: 2,
+    _id: 2,
     title: "Test Product 2",
     price: 149.99,
     description: "Test Description 2",
-    category: "electronics",
+    category: {
+      _id: "2",
+      name: "Test Category 2",
+    },
     stock: 5,
   },
 ];

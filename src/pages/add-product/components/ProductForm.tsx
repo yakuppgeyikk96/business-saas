@@ -1,4 +1,3 @@
-// src/pages/add-product/components/ProductForm.tsx
 import { ProductFormData } from "@/schemas/productSchema";
 import { UseFormReturn } from "react-hook-form";
 import { Button } from "@/components/ui/button";

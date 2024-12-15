@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -23,8 +22,6 @@ export const ProductHeader = ({
   setIsGridView,
   onSortChange,
 }: ProductHeaderProps) => {
-  const navigate = useNavigate();
-
   return (
     <Card>
       <CardHeader>
@@ -48,7 +45,6 @@ export const ProductHeader = ({
                 <Download size={20} className="mr-2" />
                 Dışa Aktar
               </Button>
-              <Button onClick={() => navigate("/add")}>Yeni Ürün Ekle</Button>
             </div>
           </div>
         </div>

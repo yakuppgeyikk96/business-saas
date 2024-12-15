@@ -48,7 +48,7 @@ export const ProductGrid = ({
     >
       {products?.map((product) => (
         <ProductCard
-          key={product.id}
+          key={product._id}
           product={product}
           viewMode={isGridView ? "grid" : "list"}
         />

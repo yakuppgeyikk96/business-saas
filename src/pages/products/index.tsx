@@ -1,4 +1,3 @@
-// src/pages/products/index.tsx
 import { ProductHeader } from "./components/ProductHeader";
 import { ProductGrid } from "./components/ProductGrid";
 import { ProductPagination } from "./components/ProductPagination";

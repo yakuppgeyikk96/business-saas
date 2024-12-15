@@ -7,7 +7,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 const ProductDetailPage = () => {
   const {
-    product,
+    response,
     isLoading,
     isEditing,
     setIsEditing,
@@ -26,14 +26,14 @@ const ProductDetailPage = () => {
     );
   }
 
-  if (!product) {
+  if (!response || !response.data) {
     return <div>Ürün bulunamadı</div>;
   }
 
   return (
     <Card>
       <CardHeader className="flex flex-row items-center justify-between">
-        <CardTitle>{product.title}</CardTitle>
+        <CardTitle>{response.data.title}</CardTitle>
         <ProductActions
           onEdit={() => setIsEditing(true)}
           onDelete={handleDelete}
@@ -42,12 +42,12 @@ const ProductDetailPage = () => {
 
       {isEditing ? (
         <ProductEditForm
-          product={product}
+          product={response.data}
           onSubmit={handleUpdate}
           onCancel={() => setIsEditing(false)}
         />
       ) : (
-        <ProductInfo product={product} />
+        <ProductInfo product={response.data} />
       )}
     </Card>
   );

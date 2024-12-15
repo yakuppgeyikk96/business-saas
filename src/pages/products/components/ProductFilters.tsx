@@ -21,7 +21,7 @@ interface FilterProps {
 }
 
 const ProductFilters = ({ onFilterChange }: FilterProps) => {
-  const { data: categories } = useGetCategoriesQuery();
+  const { data: response } = useGetCategoriesQuery();
 
   const [tempFilters, setTempFilters] = useState({
     category: "",
@@ -71,8 +71,8 @@ const ProductFilters = ({ onFilterChange }: FilterProps) => {
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="all">Tümü</SelectItem>
-              {categories?.map((category) => (
-                <SelectItem key={category.id} value={category.id}>
+              {response?.data?.map((category) => (
+                <SelectItem key={category._id} value={category._id}>
                   {category.name}
                 </SelectItem>
               ))}

@@ -1,9 +1,6 @@
 // src/pages/products/hooks/useProducts.tsx
 import { useState } from "react";
-import {
-  useGetProductsQuery,
-  useGetTotalProductsQuery,
-} from "@/services/productApi";
+import { useGetProductsQuery } from "@/services/productApi";
 import type { SortOption } from "@/pages/products/components/ProductSort";
 
 interface Filters {
@@ -13,7 +10,7 @@ interface Filters {
 }
 
 export const useProducts = () => {
-  const itemsPerPage = 6;
+  const itemsPerPage = 9;
   const [isGridView, setIsGridView] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [filters, setFilters] = useState<Filters>({
@@ -26,22 +23,21 @@ export const useProducts = () => {
     order: "asc" | "desc";
   } | null>(null);
 
-  // data'yı products olarak yeniden adlandır
   const {
-    data: products,
+    data: response,
     isLoading,
     isFetching,
   } = useGetProductsQuery({
-    _start: (currentPage - 1) * itemsPerPage,
-    _limit: itemsPerPage,
-    _sort: sort?.field,
-    _order: sort?.order,
+    page: currentPage,
+    limit: itemsPerPage,
+    sortField: sort?.field,
+    sortOrder: sort?.order,
     category: filters.category || undefined,
-    price_gte: filters.minPrice,
-    price_lte: filters.maxPrice,
+    minPrice: filters.minPrice,
+    maxPrice: filters.maxPrice,
   });
 
-  const { data: totalCount = 0 } = useGetTotalProductsQuery();
+  const totalCount = response?.metadata.total || 0;
 
   const totalPages = Math.ceil(totalCount / itemsPerPage);
 
@@ -61,7 +57,7 @@ export const useProducts = () => {
   };
 
   return {
-    products, // data.products ya da sadece data olarak döndürmeye dikkat et
+    products: response?.data,
     isLoading,
     isFetching,
     isGridView,

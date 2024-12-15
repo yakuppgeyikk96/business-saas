@@ -35,7 +35,7 @@ export const CategoryList = ({
     <div className="grid gap-2">
       {categories.map((category) => (
         <CategoryItem
-          key={category.id}
+          key={category._id}
           category={category}
           onDelete={onDelete}
         />

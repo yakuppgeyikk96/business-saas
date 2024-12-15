@@ -6,20 +6,27 @@ import {
   useUpdateProductMutation,
   useDeleteProductMutation,
 } from "@/services/productApi";
-import { Product } from "@/types/product";
+import { ProductFormData } from "@/schemas/productSchema";
 
 export const useProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [isEditing, setIsEditing] = useState(false);
 
-  const { data: product, isLoading } = useGetProductQuery(id!);
+  const { data: response, isLoading } = useGetProductQuery(id!);
+
   const [updateProduct] = useUpdateProductMutation();
   const [deleteProduct] = useDeleteProductMutation();
 
-  const handleUpdate = async (data: Partial<Product>) => {
+  const handleUpdate = async (formData: ProductFormData) => {
     try {
-      await updateProduct({ id: id!, data }).unwrap();
+      await updateProduct({
+        id: id!,
+        data: {
+          ...formData,
+          category: formData.category,
+        },
+      }).unwrap();
       setIsEditing(false);
     } catch (error) {
       console.error("Failed to update product:", error);
@@ -36,7 +43,7 @@ export const useProductDetail = () => {
   };
 
   return {
-    product,
+    response,
     isLoading,
     isEditing,
     setIsEditing,

@@ -1,10 +1,9 @@
-import { Product } from "@/types/product";
+// src/pages/product-detail/components/ProductEditForm.tsx
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { productSchema, ProductFormData } from "@/schemas/productSchema";
+import { CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { CardContent } from "@/components/ui/card";
 import {
   Select,
   SelectContent,
@@ -13,6 +12,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useGetCategoriesQuery } from "@/services/categoryApi";
+import { productSchema, ProductFormData } from "@/schemas/productSchema";
+import { Product } from "@/types/product";
 
 interface ProductEditFormProps {
   product: Product;
@@ -25,7 +26,7 @@ export const ProductEditForm = ({
   onSubmit,
   onCancel,
 }: ProductEditFormProps) => {
-  const { data: categories } = useGetCategoriesQuery();
+  const { data: categoriesResponse } = useGetCategoriesQuery();
 
   const {
     register,
@@ -38,7 +39,7 @@ export const ProductEditForm = ({
       title: product.title,
       price: product.price,
       description: product.description,
-      category: product.category,
+      category: product.category._id,
       stock: product.stock,
     },
   });
@@ -81,8 +82,8 @@ export const ProductEditForm = ({
                   <SelectValue placeholder="Kategori seçin" />
                 </SelectTrigger>
                 <SelectContent>
-                  {categories?.map((category) => (
-                    <SelectItem key={category.id} value={category.id}>
+                  {categoriesResponse?.data.map((category) => (
+                    <SelectItem key={category._id} value={category._id}>
                       {category.name}
                     </SelectItem>
                   ))}

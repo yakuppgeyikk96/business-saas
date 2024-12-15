@@ -8,7 +8,7 @@ import {
 export const useCategories = () => {
   const [newCategory, setNewCategory] = useState("");
 
-  const { data: categories, isLoading } = useGetCategoriesQuery();
+  const { data: categoriesResponse, isLoading } = useGetCategoriesQuery();
   const [addCategory] = useAddCategoryMutation();
   const [deleteCategory] = useDeleteCategoryMutation();
 
@@ -16,7 +16,7 @@ export const useCategories = () => {
     if (newCategory.trim()) {
       try {
         await addCategory({ name: newCategory.trim() }).unwrap();
-        setNewCategory(""); // başarılı ekleme sonrası formu temizle
+        setNewCategory("");
       } catch (error) {
         console.error("Failed to add category:", error);
       }
@@ -32,7 +32,7 @@ export const useCategories = () => {
   };
 
   return {
-    categories,
+    categories: categoriesResponse?.data || [],
     isLoading,
     newCategory,
     setNewCategory,

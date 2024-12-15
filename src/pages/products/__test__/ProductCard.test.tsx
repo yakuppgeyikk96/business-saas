@@ -5,11 +5,14 @@ import { describe, expect, it } from "vitest";
 import ProductCard from "../components/ProductCard";
 
 const mockProduct = {
-  id: 1,
+  _id: 1,
   title: "Test Product",
   price: 99.99,
   description: "Test Description",
-  category: "electronics",
+  category: {
+    _id: "1",
+    name: "Test Category",
+  },
   stock: 10,
 };
 

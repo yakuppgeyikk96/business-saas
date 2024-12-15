@@ -8,7 +8,7 @@ import { useGetCategoriesQuery } from "@/services/categoryApi";
 export const useProductForm = () => {
   const navigate = useNavigate();
   const [addProduct, { isLoading }] = useAddProductMutation();
-  const { data: categories } = useGetCategoriesQuery();
+  const { data: categoriesResponse } = useGetCategoriesQuery();
 
   const form = useForm<ProductFormData>({
     resolver: zodResolver(productSchema),
@@ -33,7 +33,7 @@ export const useProductForm = () => {
   return {
     form,
     isLoading,
-    categories,
+    categories: categoriesResponse?.data || [],
     onSubmit,
   };
 };

@@ -37,7 +37,7 @@ export const CategoryItem = ({ category, onDelete }: CategoryItemProps) => {
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>İptal</AlertDialogCancel>
-            <AlertDialogAction onClick={() => onDelete(category.id)}>
+            <AlertDialogAction onClick={() => onDelete(category._id)}>
               Evet, Sil
             </AlertDialogAction>
           </AlertDialogFooter>

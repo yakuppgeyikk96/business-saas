@@ -20,7 +20,7 @@ const ProductCard = ({ product, viewMode }: ProductCardProps) => {
             <div className="flex-1">
               <h3 className="font-semibold text-lg">{product.title}</h3>
               <p className="text-sm text-muted-foreground">
-                Kategori: {product.category}
+                Kategori: {product.category.name}
               </p>
             </div>
             <div className="flex items-center gap-8">
@@ -30,7 +30,7 @@ const ProductCard = ({ product, viewMode }: ProductCardProps) => {
                   Stok: {product.stock}
                 </p>
               </div>
-              <Button onClick={() => navigate(`/product/${product.id}`)}>
+              <Button onClick={() => navigate(`/product/${product._id}`)}>
                 Detayları Gör
               </Button>
             </div>
@@ -47,7 +47,7 @@ const ProductCard = ({ product, viewMode }: ProductCardProps) => {
           <div>
             <h3 className="font-semibold text-lg">{product.title}</h3>
             <p className="text-sm text-muted-foreground">
-              Kategori: {product.category}
+              Kategori: {product.category.name}
             </p>
           </div>
           <div className="flex items-center justify-between">
@@ -57,7 +57,7 @@ const ProductCard = ({ product, viewMode }: ProductCardProps) => {
                 Stok: {product.stock}
               </p>
             </div>
-            <Button onClick={() => navigate(`/product/${product.id}`)}>
+            <Button onClick={() => navigate(`/product/${product._id}`)}>
               Detayları Gör
             </Button>
           </div>
