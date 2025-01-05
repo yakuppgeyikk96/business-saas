@@ -1,34 +1,36 @@
 // src/components/NavigationBar.tsx
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Moon, Sun } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store";
 import { Button } from "./ui/button";
 import { toggleTheme } from "@/store/theme/slice";
 import useAuth from "@/hooks/use-auth";
-import { useGetCurrentUserQuery, useLogoutMutation } from "@/services/authApi";
+import { useGetCurrentUserQuery } from "@/services/authApi";
 
 export const NavigationBar = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode);
 
   const { isAuthenticated } = useAuth();
 
-  const [logout] = useLogoutMutation();
+  // const [logout] = useLogoutMutation();
   const { data: userData } = useGetCurrentUserQuery(undefined, {
     skip: !isAuthenticated,
   });
 
-  const handleLogout = async () => {
-    try {
-      await logout().unwrap();
-      navigate("/login");
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  console.log(userData);
+
+  // const handleLogout = async () => {
+  //   try {
+  //     await logout().unwrap();
+  //     navigate("/login");
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   return (
     <nav className="bg-white shadow-sm dark:bg-gray-800">
