@@ -1,8 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { productApi } from "../services/productApi";
-import themeReducer from "../features/theme/themeSlice";
+import themeReducer from "./theme/slice";
+import authReducer from "./auth/slice";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import { baseApi } from "@/services/baseApi";
 
 const persistConfig = {
   key: "theme",
@@ -15,6 +18,7 @@ export const store = configureStore({
   reducer: {
     [productApi.reducerPath]: productApi.reducer,
     theme: persistedThemeReducer,
+    auth: authReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -25,10 +29,13 @@ export const store = configureStore({
           "persist/REGISTER",
         ],
       },
-    }).concat(productApi.middleware),
+    }).concat(baseApi.middleware),
 });
 
 export const persistor = persistStore(store);
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+
+export const useAppDispatch = () => useDispatch<AppDispatch>();
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;

@@ -10,7 +10,7 @@ export const productApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getProducts: builder.query<GetProductsResponse, ProductsQueryParams>({
       query: (params) => ({
-        url: "products",
+        url: "business/products",
         params,
       }),
       providesTags: ["Product"],
@@ -23,7 +23,7 @@ export const productApi = baseApi.injectEndpoints({
 
     addProduct: builder.mutation<ApiResponse<Product>, AddProductData>({
       query: (product) => ({
-        url: "products",
+        url: "business/products",
         method: "POST",
         body: product,
       }),
@@ -35,7 +35,7 @@ export const productApi = baseApi.injectEndpoints({
       { id: string; data: UpdateProductData }
     >({
       query: ({ id, data }) => ({
-        url: `products/${id}`,
+        url: `business/products/${id}`,
         method: "PATCH",
         body: data,
       }),
@@ -47,7 +47,7 @@ export const productApi = baseApi.injectEndpoints({
 
     deleteProduct: builder.mutation<ApiResponse<null>, string>({
       query: (id) => ({
-        url: `products/${id}`,
+        url: `business/products/${id}`,
         method: "DELETE",
       }),
       invalidatesTags: ["Product"],

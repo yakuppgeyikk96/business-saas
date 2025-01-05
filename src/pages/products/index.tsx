@@ -3,6 +3,7 @@ import { ProductGrid } from "./components/ProductGrid";
 import { ProductPagination } from "./components/ProductPagination";
 import { useProducts } from "./hooks/useProducts";
 import ProductFilters from "@/pages/products/components/ProductFilters";
+import NotFound from "@/components/NotFound";
 
 const ProductsPage = () => {
   const {
@@ -34,18 +35,28 @@ const ProductsPage = () => {
         </div>
 
         <div className="flex-1 space-y-6">
-          <ProductGrid
-            products={products}
-            isGridView={isGridView}
-            isLoading={isLoading}
-            isFetching={isFetching}
-          />
+          {products && products.length > 0 ? (
+            <>
+              <ProductGrid
+                products={products}
+                isGridView={isGridView}
+                isLoading={isLoading}
+                isFetching={isFetching}
+              />
 
-          <ProductPagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={setCurrentPage}
-          />
+              <ProductPagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={setCurrentPage}
+              />
+            </>
+          ) : (
+            <NotFound
+              title="Ürün bulunamadı"
+              message=""
+              showBackButton={false}
+            />
+          )}
         </div>
       </div>
     </div>

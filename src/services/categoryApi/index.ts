@@ -11,7 +11,7 @@ export const categoryApi = baseApi.injectEndpoints({
     addCategory: builder.mutation<ApiResponse<Category>, Omit<Category, "_id">>(
       {
         query: (category) => ({
-          url: "/categories",
+          url: "business/categories",
           method: "POST",
           body: category,
         }),
@@ -20,7 +20,7 @@ export const categoryApi = baseApi.injectEndpoints({
     ),
     deleteCategory: builder.mutation<ApiResponse<null>, string>({
       query: (id) => ({
-        url: `/categories/${id}`,
+        url: `business/categories/${id}`,
         method: "DELETE",
       }),
       invalidatesTags: ["Category"],

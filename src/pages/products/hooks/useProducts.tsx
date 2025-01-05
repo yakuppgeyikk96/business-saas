@@ -23,6 +23,8 @@ export const useProducts = () => {
     order: "asc" | "desc";
   } | null>(null);
 
+  const organizationId = "677ac322526a89a8f40bbd6d";
+
   const {
     data: response,
     isLoading,
@@ -35,6 +37,7 @@ export const useProducts = () => {
     category: filters.category || undefined,
     minPrice: filters.minPrice,
     maxPrice: filters.maxPrice,
+    organizationId,
   });
 
   const totalCount = response?.metadata.total || 0;

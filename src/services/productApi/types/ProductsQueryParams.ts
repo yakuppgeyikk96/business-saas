@@ -7,4 +7,5 @@ export default interface ProductsQueryParams {
   category?: string;
   minPrice?: number;
   maxPrice?: number;
+  organizationId: string;
 }
